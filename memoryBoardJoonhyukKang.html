@@ -336,12 +336,11 @@ function spiralOrder(matrix) { //spiral algorithm
 function lockButton() {
 
     for(var i = 0; i < 3; i++)
-	var buttonDiv = document.getElementsByTagName("button")[i];
-      buttonDiv.setAttribute('disabled', true);
+      document.getElementsByTagName("button")[i].setAttribute('disabled', true);
 
       setTimeout(function(){
 	  for(var i = 0; i < 3; i++)
-        buttonDiv.removeAttribute('disabled');
+        document.getElementsByTagName("button")[i].removeAttribute('disabled');
       }, 2500)
 }
 
