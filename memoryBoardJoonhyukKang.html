@@ -192,7 +192,7 @@ function newEasyBoard(){
 
 function resetBoard() {
 	var size = document.getElementById('hiddenDifficulty').innerHTML; //retrieve current board difficulty value from hidden div
-	
+	var moves = document.getElementById("moves");
 	//figure out which board needs to be reset
 	if(size == "hard"){
 	  var tiles = document.getElementsByClassName('hard');
@@ -208,7 +208,7 @@ function resetBoard() {
       tileStorage = [];
 	  tilesFlipped = 0;
 	  numberOfMoves = 0;
-	  document.getElementById("moves").innerHTML = "# MOVES: "+numberOfMoves;
+	  moves.innerHTML = "# MOVES: "+numberOfMoves;
 	}
 	if(size == "med"){
 	  var tiles = document.getElementsByClassName('med');
@@ -222,7 +222,7 @@ function resetBoard() {
       tileStorage = [];
 	  tilesFlipped = 0;
 	  numberOfMoves = 0;
-	  document.getElementById("moves").innerHTML = "# MOVES: "+numberOfMoves;
+	  moves.innerHTML = "# MOVES: "+numberOfMoves;
 	}
 	if(size == "easy"){
 	  var tiles = document.getElementsByClassName('easy');
@@ -236,7 +236,7 @@ function resetBoard() {
       tileStorage = [];
 	  tilesFlipped = 0;
 	  numberOfMoves = 0;
-	  document.getElementById("moves").innerHTML = "# MOVES: "+numberOfMoves;
+	  moves.innerHTML = "# MOVES: "+numberOfMoves;
 	}
 }
 
@@ -258,20 +258,21 @@ function turnFlip(tile,val,boardSize){
 				cardValues = [];
             	tileStorage = [];
 				
+				let gameBoard = document.getElementById('gameBoard');
 				//if all cards matched, create new board
 				if(boardSize == "easy" && tilesFlipped == 8){
 					alert("All cards matched...give it another go!");
-					document.getElementById('gameBoard').innerHTML = "";
+					gameBoard.innerHTML = "";
 					newEasyBoard();
 				}
 				if(boardSize == "med" && tilesFlipped == 20){
 					alert("All cards matched...give it another go!");
-					document.getElementById('gameBoard').innerHTML = "";
+					gameBoard.innerHTML = "";
 					newMediumBoard();
 				}
 				if(boardSize == "hard" && tilesFlipped == cardArray.length){
 					alert("All cards matched...give it another go!");
-					document.getElementById('gameBoard').innerHTML = "";
+					gameBoard.innerHTML = "";
 					newHardBoard();
 				}
 			} else {
@@ -335,11 +336,12 @@ function spiralOrder(matrix) { //spiral algorithm
 function lockButton() {
 
     for(var i = 0; i < 3; i++)
-      document.getElementsByTagName("button")[i].setAttribute('disabled', true);
+	var buttonDiv = document.getElementsByTagName("button")[i];
+      buttonDiv.setAttribute('disabled', true);
 
       setTimeout(function(){
 	  for(var i = 0; i < 3; i++)
-        document.getElementsByTagName("button")[i].removeAttribute('disabled');
+        buttonDiv.removeAttribute('disabled');
       }, 2500)
 }
 
